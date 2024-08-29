@@ -11,6 +11,7 @@
     --popover: 0 0% 100%; /* branco */
     --popover-foreground: 251.5 67.4% 16%; /* escurecendo a primária */
     --primary: 251.5 67.4% 52%; /* nova cor primária */
+    --color-seconday: 354 95% 64%;
     --primary-foreground: 0 0% 100%; /* branco, para contraste com primária */
     --secondary: 251.5 40% 70%; /* um tom mais claro da primária */
     --secondary-foreground: 251.5 67.4% 16%; /* escurecendo a primária */
@@ -92,6 +93,7 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: "Poppins", sans-serif;
   }
 }
 @keyframes gradient {
@@ -107,7 +109,12 @@
 }
 
 .gradient-bg {
-  background: linear-gradient(to right, #694af0, #2e0a5c, #5936d8);
+  background: linear-gradient(to right, #694af0, #2e0a5c, #fa525b);
   background-size: 200% 500%;
   animation: gradient 20s ease infinite;
+}
+.gradient-bg-a {
+  background: linear-gradient(to right, #2e0a5c, #694af0);
+  background-size: 180%;
+  /* animation: gradient 20s ease infinite; */
 }
