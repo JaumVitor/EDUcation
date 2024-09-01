@@ -21,7 +21,7 @@
     --accent-foreground: 251.5 67.4% 16%; /* escurecendo a primária */
     --destructive: 0 84.2% 60.2%; /* vermelho como cor de alerta */
     --destructive-foreground: 0 0% 100%; /* branco para contraste */
-    --border: 251.5 20% 88%; /* tom suave da primária para bordas */
+    --border: 134 61% 58%; /* tom suave da primária para bordas */
     --input: 251.5 20% 88%; /* igual ao border para consistência */
     --ring: 251.5 67.4% 52%; /* igual à primária para anéis */
     --radius: 0.5rem; /* não precisa de alteração */
@@ -94,6 +94,7 @@
   body {
     @apply bg-background text-foreground;
     font-family: "Poppins", sans-serif;
+    height: 100vh;
   }
 }
 @keyframes gradient {
