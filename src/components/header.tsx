@@ -21,10 +21,7 @@ import {
 
 import {
   CalendarIcon,
-  EnvelopeClosedIcon,
   FaceIcon,
-  GearIcon,
-  PersonIcon,
   RocketIcon
 } from '@radix-ui/react-icons'
 
@@ -35,8 +32,6 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator,
-  CommandShortcut
 } from '@/components/ui/command'
 
 import { Separator } from "@/components/ui/separator"
