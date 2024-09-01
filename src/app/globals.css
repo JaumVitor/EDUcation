@@ -25,11 +25,11 @@
     --input: 251.5 20% 88%; /* igual ao border para consistência */
     --ring: 251.5 67.4% 52%; /* igual à primária para anéis */
     --radius: 0.5rem; /* não precisa de alteração */
-    --chart-1: 12 76% 61%; /* mantém o laranja */
-    --chart-2: 173 58% 39%; /* mantém o verde */
-    --chart-3: 197 37% 24%; /* mantém o azul petróleo */
-    --chart-4: 43 74% 66%; /* mantém o amarelo */
-    --chart-5: 27 87% 67%; /* mantém o laranja claro */
+    --chart-1: 255 86% 63%;
+    --chart-2: 260 55% 34%;
+    --chart-3: 270 80% 20%; 
+    --chart-4: 350 68% 35%; 
+    --chart-5: 355 95% 65%; 
   }
 
   .dark {
@@ -110,7 +110,7 @@
 }
 
 .gradient-bg {
-  background: linear-gradient(to right, #694af0, #2e0a5c, #fa525b);
+  background: linear-gradient(to right, #694af0, #2e0a5c, rgb(250, 82, 91));
   background-size: 200% 500%;
   animation: gradient 20s ease infinite;
 }
