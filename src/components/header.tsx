@@ -65,37 +65,23 @@ export default function Header() {
                 <Command className="rounded-lg border bg-transparent text-zinc-50 border-none shadow-none">
                   <CommandInput placeholder="Digite o que procura..." />
                   <CommandList>
-                    <CommandEmpty>Nenhum resultado encontrado</CommandEmpty>
-                    <CommandGroup heading="Suggestions">
+                    <CommandEmpty className='text-contrast text-bold py-2'>Nenhum resultado encontrado</CommandEmpty>
+                    <CommandGroup heading="Opções principais">
                       <CommandItem>
-                        <CalendarIcon className="mr-2 h-4 w-4" />
-                        <span>Calendar</span>
+                        <CalendarIcon className="mr-2 h-4 w-4 text-green-400" />
+                        <span className="text-zinc-50">Direção</span>
                       </CommandItem>
                       <CommandItem>
-                        <FaceIcon className="mr-2 h-4 w-4" />
-                        <span>Search Emoji</span>
+                        <FaceIcon className="mr-2 h-4 w-4 text-green-400" />
+                        <span className="text-zinc-50">Docente</span>
                       </CommandItem>
-                      <CommandItem disabled>
-                        <RocketIcon className="mr-2 h-4 w-4" />
-                        <span>Launch</span>
+                      <CommandItem >
+                        <RocketIcon className="mr-2 h-4 w-4 text-green-400" />
+                        <span className="text-zinc-50">Disciplina</span>
                       </CommandItem>
-                    </CommandGroup>
-                    <CommandSeparator />
-                    <CommandGroup heading="Settings">
-                      <CommandItem>
-                        <PersonIcon className="mr-2 h-4 w-4" />
-                        <span>Profile</span>
-                        <CommandShortcut>⌘P</CommandShortcut>
-                      </CommandItem>
-                      <CommandItem>
-                        <EnvelopeClosedIcon className="mr-2 h-4 w-4" />
-                        <span>Mail</span>
-                        <CommandShortcut>⌘B</CommandShortcut>
-                      </CommandItem>
-                      <CommandItem>
-                        <GearIcon className="mr-2 h-4 w-4" />
-                        <span>Settings</span>
-                        <CommandShortcut>⌘S</CommandShortcut>
+                      <CommandItem >
+                        <RocketIcon className="mr-2 h-4 w-4 text-green-400" />
+                        <span className="text-zinc-50">Turma</span>
                       </CommandItem>
                     </CommandGroup>
                   </CommandList>
@@ -130,7 +116,7 @@ export default function Header() {
               <div className={`px-2 transition-all duration-1000 opacity-100`}>
                 <p className="text-xl pb-2 flex items-center justify-items-start gap-2">
                   <GrConfigure className="w-4" />
-                  <p className='text-lg'>Configurações</p>
+                  <p className='text-base'>Configurações</p>
                 </p>
               </div>
               <MenubarItem className="py-1 flex gap-2 cursor-pointer">
