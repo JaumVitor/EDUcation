@@ -1,18 +1,23 @@
+import React from 'react'
+
 import { CanvasRevealEffect } from './ui/canvas-reveal-effect'
+
+import { AnimatePresence, motion } from 'framer-motion'
 
 import { PiStudentBold } from 'react-icons/pi'
 import { FaChalkboardTeacher } from 'react-icons/fa'
 import { MdClass } from 'react-icons/md'
 import { GiBookshelf } from 'react-icons/gi'
 import { GiSpellBook } from 'react-icons/gi'
-import React from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { TextGenerateEffect } from './ui/text-generate-effect'
 
 export default function MenuMain() {
   return (
     <>
-      <h2 className="text-3xl font-bold pb-5">Selecione uma opção</h2>
-      <div className="flex flex-col lg:flex-row items-center justify-center bg-transparent dark:bg-black w-full gap-4">
+      <h2 className="text-2xl font-bold underline">
+        <TextGenerateEffect className=" font-bold pb-5 underline" words='Menu Principal'/>
+      </h2>
+      <div className="flex flex-col lg:flex-row items-center justify-center bg-transparent dark:bg-black w-full gap-4 pb-20">
         <Card title="Direção" icon={<GiSpellBook className="w-32 h-32" />}>
           <CanvasRevealEffect
             animationSpeed={1}
