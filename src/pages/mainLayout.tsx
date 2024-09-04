@@ -3,6 +3,7 @@ import Header from '../components/header';
 import Wrapper from '../components/Wrapper';
 import { BackgroundGradientAnimation } from '@/components/ui/background-gradient-animation';
 
+
 export default function MainLayout() {
   return (
     <div className="h-screen flex flex-col">
@@ -13,7 +14,7 @@ export default function MainLayout() {
             <Wrapper>
               <Outlet /> {/* Renderiza as rotas internas, como Home */}
             </Wrapper>
-          </main>
+          </main>w
         </BackgroundGradientAnimation>
       </div>
     </div>
