@@ -1,8 +1,24 @@
 import Header from './components/header'
-import MenuMain from './components/menu-main'
-import ObservationMenuMain from './components/observation-menu-main'
 import { BackgroundGradientAnimation } from './components/ui/background-gradient-animation'
 import Wrapper from './components/Wrapper'
+import Director from './pages/director'
+import Home from './pages/home'
+
+import {
+  createBrowserRouter,
+  RouterProvider
+} from "react-router-dom"
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Home />
+  },
+  {
+    path: '/director',
+    element: <Director />
+  }
+]);
 
 export default function App() {
   return (
@@ -14,8 +30,7 @@ export default function App() {
           <main className="flex flex-col w-[100%] h-screen pointer-events-auto bg-zinc-100 z-10">
             <Wrapper>
               {/* Insert content */}
-              <MenuMain />
-              <ObservationMenuMain />
+              <RouterProvider router={router} />
             </Wrapper>
           </main>
         </BackgroundGradientAnimation>

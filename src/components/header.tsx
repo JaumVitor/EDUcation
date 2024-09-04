@@ -114,11 +114,11 @@ export default function Header() {
                   <p className='text-base'>Configurações</p>
                 </p>
               </div>
-              <MenubarItem className="py-1 flex gap-2 cursor-pointer hover:bg-violet-300">
+              <MenubarItem className="py-1 flex gap-2 cursor-pointer hover:bg-violet-200">
                 <LiaUserEditSolid />
                 Alterar dados
               </MenubarItem>
-              <MenubarItem className="py-1 flex gap-2 cursor-pointer hover:bg-violet-300">
+              <MenubarItem className="py-1 flex gap-2 cursor-pointer hover:bg-violet-200">
                 <ImExit />
                 Sair
               </MenubarItem>
