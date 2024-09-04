@@ -14,55 +14,57 @@ import { TextGenerateEffect } from './ui/text-generate-effect'
 export default function MenuMain() {
   return (
     <>
-      <h2 className="text-2xl font-bold underline">
-        <TextGenerateEffect className=" font-bold pb-5 underline" words='Menu Principal'/>
-      </h2>
-      <div className="flex flex-col lg:flex-row items-center justify-center bg-transparent dark:bg-black w-full gap-4 pb-20">
-        <Card title="Direção" icon={<GiSpellBook className="w-32 h-32" />}>
-          <CanvasRevealEffect
-            animationSpeed={1}
-            containerClassName="bg-violet-900"
-            colors={[[250, 82, 91]]}
-            dotSize={2.2}
-          />
-        </Card>
-        <Card
-          title="Docente"
-          icon={<FaChalkboardTeacher className="w-32 h-32" />}
-        >
-          <CanvasRevealEffect
-            animationSpeed={1}
-            containerClassName="bg-violet-900"
-            colors={[[250, 82, 91]]}
-            dotSize={2.2}
-          />
-          {/* Radial gradient for the cute fade */}
-          <div className="absolute inset-0 [mask-image:radial-gradient(400px_at_center,white,transparent)] bg-black/50 dark:bg-black/90" />
-        </Card>
-        <Card title="Disciplina" icon={<GiBookshelf className="w-32 h-32" />}>
-          <CanvasRevealEffect
-            animationSpeed={1}
-            containerClassName="bg-violet-900"
-            colors={[[250, 82, 91]]}
-            dotSize={2.2}
-          />
-        </Card>
-        <Card title="Turma" icon={<MdClass className="w-32 h-32" />}>
-          <CanvasRevealEffect
-            animationSpeed={1}
-            containerClassName="bg-violet-900"
-            colors={[[250, 82, 91]]}
-            dotSize={2.2}
-          />
-        </Card>
-        <Card title="Aluno" icon={<PiStudentBold className="w-32 h-32" />}>
-          <CanvasRevealEffect
-            animationSpeed={1}
-            containerClassName="bg-violet-900"
-            colors={[[250, 82, 91]]}
-            dotSize={2.2}
-          />
-        </Card>
+      <div>
+        <h2 className="text-2xl font-bold underline">
+          <TextGenerateEffect className=" font-bold pb-5 underline" words='Menu Principal'/>
+        </h2>
+        <div className="flex flex-col lg:flex-row items-center justify-center bg-transparent dark:bg-black w-full gap-4">
+          <Card title="Direção" icon={<GiSpellBook className="w-32 h-32" />}>
+            <CanvasRevealEffect
+              animationSpeed={1}
+              containerClassName="bg-violet-900"
+              colors={[[250, 82, 91]]}
+              dotSize={2.2}
+            />
+          </Card>
+          <Card
+            title="Docente"
+            icon={<FaChalkboardTeacher className="w-32 h-32" />}
+          >
+            <CanvasRevealEffect
+              animationSpeed={1}
+              containerClassName="bg-violet-900"
+              colors={[[250, 82, 91]]}
+              dotSize={2.2}
+            />
+            {/* Radial gradient for the cute fade */}
+            <div className="absolute inset-0 [mask-image:radial-gradient(400px_at_center,white,transparent)] bg-black/50 dark:bg-black/90" />
+          </Card>
+          <Card title="Disciplina" icon={<GiBookshelf className="w-32 h-32" />}>
+            <CanvasRevealEffect
+              animationSpeed={1}
+              containerClassName="bg-violet-900"
+              colors={[[250, 82, 91]]}
+              dotSize={2.2}
+            />
+          </Card>
+          <Card title="Turma" icon={<MdClass className="w-32 h-32" />}>
+            <CanvasRevealEffect
+              animationSpeed={1}
+              containerClassName="bg-violet-900"
+              colors={[[250, 82, 91]]}
+              dotSize={2.2}
+            />
+          </Card>
+          <Card title="Aluno" icon={<PiStudentBold className="w-32 h-32" />}>
+            <CanvasRevealEffect
+              animationSpeed={1}
+              containerClassName="bg-violet-900"
+              colors={[[250, 82, 91]]}
+              dotSize={2.2}
+            />
+          </Card>
+        </div>
       </div>
     </>
   )
@@ -82,7 +84,7 @@ const Card = ({
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="border-2 border-black/[0.2] hover:border-green-400 hover:border-[3.5px] group/canvas-card flex items-center justify-center dark:border-white/[0.2]  max-w-sm w-full mx-auto p-4 relative h-[30rem] cursor-pointer"
+      className="border-2 border-black/[0.2] hover:border-green-400 hover:border-[3.5px] group/canvas-card flex items-center justify-center dark:border-white/[0.2]  max-w-sm w-full mx-auto p-4 relative min-h-[25rem] cursor-pointer bg-violet-300/10"
     >
       <Icon className="absolute h-6 w-6 -top-3 -left-3 dark:text-white text-black" />
       <Icon className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white text-black" />

@@ -38,7 +38,7 @@ export default function ObservatinoMenuMain() {
 
   return (
     <div>
-      <Alert className='bg-violet-200'>
+      <Alert className='bg-violet-200/10'>
         <AlertTitle className="text-xl text-contrast font-bold pb-3">
           <div className='flex justify-between'>
             Auxilio das opções:

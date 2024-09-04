@@ -42,7 +42,7 @@ import { GrConfigure } from 'react-icons/gr'
 
 export default function Header() {
   return (
-    <div className="flex justify-between items-center gradient-bg px-4 py-2 border-green-400">
+    <div className="flex justify-between items-center gradient-bg px-4 py-2 border-b-2 border-green-400">
       <div className="flex gap-2 justify-center items-center">
         <Sheet>
           <SheetTrigger>
