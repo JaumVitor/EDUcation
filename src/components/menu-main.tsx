@@ -10,6 +10,7 @@ import { MdClass } from 'react-icons/md'
 import { GiBookshelf } from 'react-icons/gi'
 import { GiSpellBook } from 'react-icons/gi'
 import { TextGenerateEffect } from './ui/text-generate-effect'
+import { Link } from 'react-router-dom'
 
 export default function MenuMain() {
   return (
@@ -19,51 +20,61 @@ export default function MenuMain() {
           <TextGenerateEffect className=" font-bold pb-5 underline" words='Menu Principal'/>
         </h2>
         <div className="flex flex-col lg:flex-row items-center justify-center bg-transparent dark:bg-black w-full gap-4">
-          <Card title="Direção" icon={<GiSpellBook className="w-32 h-32" />}>
-            <CanvasRevealEffect
-              animationSpeed={1}
-              containerClassName="bg-violet-900"
-              colors={[[250, 82, 91]]}
-              dotSize={2.2}
-            />
-          </Card>
-          <Card
-            title="Docente"
-            icon={<FaChalkboardTeacher className="w-32 h-32" />}
-          >
-            <CanvasRevealEffect
-              animationSpeed={1}
-              containerClassName="bg-violet-900"
-              colors={[[250, 82, 91]]}
-              dotSize={2.2}
-            />
-            {/* Radial gradient for the cute fade */}
-            <div className="absolute inset-0 [mask-image:radial-gradient(400px_at_center,white,transparent)] bg-black/50 dark:bg-black/90" />
-          </Card>
-          <Card title="Disciplina" icon={<GiBookshelf className="w-32 h-32" />}>
-            <CanvasRevealEffect
-              animationSpeed={1}
-              containerClassName="bg-violet-900"
-              colors={[[250, 82, 91]]}
-              dotSize={2.2}
-            />
-          </Card>
-          <Card title="Turma" icon={<MdClass className="w-32 h-32" />}>
-            <CanvasRevealEffect
-              animationSpeed={1}
-              containerClassName="bg-violet-900"
-              colors={[[250, 82, 91]]}
-              dotSize={2.2}
-            />
-          </Card>
-          <Card title="Aluno" icon={<PiStudentBold className="w-32 h-32" />}>
-            <CanvasRevealEffect
-              animationSpeed={1}
-              containerClassName="bg-violet-900"
-              colors={[[250, 82, 91]]}
-              dotSize={2.2}
-            />
-          </Card>
+          <Link className="w-full" to="/director">
+            <Card title="Direção" icon={<GiSpellBook className="w-32 h-32" />}>
+              <CanvasRevealEffect
+                animationSpeed={1}
+                containerClassName="bg-violet-900"
+                colors={[[250, 82, 91]]}
+                dotSize={2.2}
+              />
+            </Card>
+          </Link>
+          <Link className="w-full" to="#">
+            <Card
+              title="Docente"
+              icon={<FaChalkboardTeacher className="w-32 h-32" />}
+            >
+              <CanvasRevealEffect
+                animationSpeed={1}
+                containerClassName="bg-violet-900"
+                colors={[[250, 82, 91]]}
+                dotSize={2.2}
+              />
+              {/* Radial gradient for the cute fade */}
+              <div className="absolute inset-0 [mask-image:radial-gradient(400px_at_center,white,transparent)] bg-black/50 dark:bg-black/90" />
+            </Card>
+          </Link>
+          <Link className="w-full" to="#">
+            <Card title="Disciplina" icon={<GiBookshelf className="w-32 h-32" />}>
+              <CanvasRevealEffect
+                animationSpeed={1}
+                containerClassName="bg-violet-900"
+                colors={[[250, 82, 91]]}
+                dotSize={2.2}
+              />
+            </Card>
+          </Link>
+          <Link className="w-full" to="#">
+            <Card title="Turma" icon={<MdClass className="w-32 h-32" />}>
+              <CanvasRevealEffect
+                animationSpeed={1}
+                containerClassName="bg-violet-900"
+                colors={[[250, 82, 91]]}
+                dotSize={2.2}
+              />
+            </Card>
+          </Link>
+          <Link className="w-full" to="#">
+            <Card title="Aluno" icon={<PiStudentBold className="w-32 h-32" />}>
+              <CanvasRevealEffect
+                animationSpeed={1}
+                containerClassName="bg-violet-900"
+                colors={[[250, 82, 91]]}
+                dotSize={2.2}
+              />
+            </Card>
+          </Link>
         </div>
       </div>
     </>

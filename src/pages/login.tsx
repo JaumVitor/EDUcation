@@ -71,12 +71,12 @@ export default function Login() {
                     Esqueceu sua senha?
                   </Link>
                 </div>
-                <Button
-                  className="w-full p-5 bg-contrast hover:bg-green-400 transition-all duration-300"
-                  variant="outline"
-                >
-                  Entrar
-                </Button>
+                <Link className="w-full" to={'/'}>
+                  <Button
+                    className="w-full p-5 bg-contrast hover:bg-green-400 transition-all duration-300"
+                    variant="outline"
+                  >Entrar</Button>
+                </Link>
               </CardFooter>
             </Card>
           </div>

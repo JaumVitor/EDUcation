@@ -14,7 +14,7 @@ export default function MainLayout() {
             <Wrapper>
               <Outlet /> {/* Renderiza as rotas internas, como Home */}
             </Wrapper>
-          </main>w
+          </main>
         </BackgroundGradientAnimation>
       </div>
     </div>

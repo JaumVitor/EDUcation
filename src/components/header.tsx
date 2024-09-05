@@ -19,11 +19,7 @@ import {
   SheetTrigger
 } from '@/components/ui/sheet'
 
-import {
-  CalendarIcon,
-  FaceIcon,
-  RocketIcon
-} from '@radix-ui/react-icons'
+import { CalendarIcon, FaceIcon, RocketIcon } from '@radix-ui/react-icons'
 
 import {
   Command,
@@ -31,14 +27,15 @@ import {
   CommandGroup,
   CommandInput,
   CommandItem,
-  CommandList,
+  CommandList
 } from '@/components/ui/command'
 
-import { Separator } from "@/components/ui/separator"
+import { Separator } from '@/components/ui/separator'
 
 import { LiaUserEditSolid } from 'react-icons/lia'
 import { ImExit } from 'react-icons/im'
 import { GrConfigure } from 'react-icons/gr'
+import { Link } from 'react-router-dom'
 
 export default function Header() {
   return (
@@ -49,7 +46,7 @@ export default function Header() {
             <IoMenuSharp className="w-5 h-7 text-contrast" />
           </SheetTrigger>
 
-          <Separator className="h-3 mx-1 bg-green-400" orientation='vertical'/>
+          <Separator className="h-3 mx-1 bg-green-400" orientation="vertical" />
 
           <SheetContent side={'left'}>
             <SheetHeader>
@@ -60,7 +57,9 @@ export default function Header() {
                 <Command className="rounded-lg border bg-transparent text-zinc-50 border-none shadow-none">
                   <CommandInput placeholder="Digite o que procura..." />
                   <CommandList>
-                    <CommandEmpty className='text-contrast text-bold py-2'>Nenhum resultado encontrado</CommandEmpty>
+                    <CommandEmpty className="text-contrast text-bold py-2">
+                      Nenhum resultado encontrado
+                    </CommandEmpty>
                     <CommandGroup heading="Opções principais">
                       <CommandItem>
                         <CalendarIcon className="mr-2 h-4 w-4 text-green-400" />
@@ -70,11 +69,11 @@ export default function Header() {
                         <FaceIcon className="mr-2 h-4 w-4 text-green-400" />
                         <span className="text-zinc-50">Docente</span>
                       </CommandItem>
-                      <CommandItem >
+                      <CommandItem>
                         <RocketIcon className="mr-2 h-4 w-4 text-green-400" />
                         <span className="text-zinc-50">Disciplina</span>
                       </CommandItem>
-                      <CommandItem >
+                      <CommandItem>
                         <RocketIcon className="mr-2 h-4 w-4 text-green-400" />
                         <span className="text-zinc-50">Turma</span>
                       </CommandItem>
@@ -109,19 +108,21 @@ export default function Header() {
 
             <MenubarContent className="m-3">
               <div className={`px-2 transition-all duration-1000 opacity-100`}>
-                <p className="text-xl pb-2 flex items-center justify-items-start gap-2">
+                <span className="text-xl pb-2 flex items-center justify-items-start gap-2">
                   <GrConfigure className="w-4" />
-                  <p className='text-base'>Configurações</p>
-                </p>
+                  <span className="text-base">Configurações</span>
+                </span>
               </div>
               <MenubarItem className="py-1 flex gap-2 cursor-pointer hover:bg-violet-200">
                 <LiaUserEditSolid />
                 Alterar dados
               </MenubarItem>
-              <MenubarItem className="py-1 flex gap-2 cursor-pointer hover:bg-violet-200">
-                <ImExit />
-                Sair
-              </MenubarItem>
+              <Link className="flex items-center gap-2 w-full hover:bg-violet-200" to="/login">
+                <MenubarItem className="py-1 flex gap-2 cursor-pointer w-full">
+                  <ImExit />
+                  Sair
+                </MenubarItem>
+              </Link>
               <MenubarSeparator />
             </MenubarContent>
           </MenubarMenu>

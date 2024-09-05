@@ -11,7 +11,7 @@
     --popover: 0 0% 100%; /* branco */
     --popover-foreground: 251.5 67.4% 16%; /* escurecendo a primária */
     --primary: 251.5 67.4% 52%; /* nova cor primária */
-    --color-seconday: 354 95% 64%;
+    --color-seconday: #4ade80;
     --primary-foreground: 0 0% 100%; /* branco, para contraste com primária */
     --secondary: 251.5 40% 70%; /* um tom mais claro da primária */
     --secondary-foreground: 251.5 67.4% 16%; /* escurecendo a primária */
