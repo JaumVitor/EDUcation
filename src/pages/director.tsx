@@ -90,6 +90,10 @@ export default function Director() {
 
     setDataTable([...dataTable, newDataTable])
     console.log('Formulário enviado')
+
+    setName('')
+    setSelectedDepartment('Vendas')
+    setDate(undefined)
   }
 
   const modal = useContext(SheetContext)
@@ -134,6 +138,7 @@ export default function Director() {
                     onChange={handleNameChangeName}
                     className="col-span-3"
                     placeholder="Nome do diretor"
+                    required={true}
                   />
                   <Label htmlFor="department">Departamento</Label>
                   {/* Opções de cargos cadastradas para diretores */}
