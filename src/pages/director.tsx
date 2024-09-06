@@ -45,6 +45,9 @@ import {
   PopoverTrigger
 } from '@/components/ui/popover'
 
+import { useContext } from 'react'
+import { SheetContext } from '@/contexts/open-sidebar-context'
+
 export default function Director() {
   const [departaments] = useState<string[]>([
     'Administração',
@@ -89,6 +92,7 @@ export default function Director() {
     console.log('Formulário enviado')
   }
 
+  const modal = useContext(SheetContext)
   return (
     <div className="pt-5">
       <div className="flex items-center justify-between">
@@ -100,9 +104,10 @@ export default function Director() {
         </h2>
 
         {/* Button que vai disparar o modal dialog */}
-        <Dialog>
+        <Dialog open={modal?.isOpenModal}>
           <DialogTrigger asChild>
             <Button
+              onClick={modal?.handleTogleModal}
               className="bg-green-500 hover:bg-green-600 text-zinc-100 font-bold hover:text-zinc-100 shadow-md border-none"
               variant="outline"
             >
@@ -184,7 +189,7 @@ export default function Director() {
                 </div>
               </div>
               <DialogFooter>
-                <Button className="w-full mt-5" type="submit">
+                <Button onClick={modal?.handleTogleModal} className="w-full mt-5" type="submit">
                   Salvar cadastro
                 </Button>
               </DialogFooter>
