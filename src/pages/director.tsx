@@ -59,7 +59,7 @@ export default function Director() {
 
   const [date, setDate] = useState<Date>()
   const [name, setName] = useState<string>('')
-  const [selectedDepartment, setSelectedDepartment] = useState<string>('Vendas')
+  const [selectedDepartment, setSelectedDepartment] = useState<string>('Nenhum selecionado')
   const [dataTable, setDataTable] = useState<{ 
     id: number, 
     name: string, 
@@ -92,8 +92,8 @@ export default function Director() {
     console.log('Formulário enviado')
 
     setName('')
-    setSelectedDepartment('Vendas')
     setDate(undefined)
+    modal?.handleTogleModal()
   }
 
   const modal = useContext(SheetContext)
@@ -142,7 +142,7 @@ export default function Director() {
                   />
                   <Label htmlFor="department">Departamento</Label>
                   {/* Opções de cargos cadastradas para diretores */}
-                  <Select onValueChange={handleSelectChange}>
+                  <Select required={true} onValueChange={handleSelectChange}>
                     <SelectTrigger className="w-full col-span-2">
                       <SelectValue placeholder="Selecione o departamento" />
                     </SelectTrigger>
@@ -194,7 +194,7 @@ export default function Director() {
                 </div>
               </div>
               <DialogFooter>
-                <Button onClick={modal?.handleTogleModal} className="w-full mt-5" type="submit">
+                <Button className="w-full mt-5" type="submit">
                   Salvar cadastro
                 </Button>
               </DialogFooter>
