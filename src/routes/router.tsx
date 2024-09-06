@@ -2,6 +2,7 @@ import Director from '@/pages/director';
 import Home from '@/pages/home';
 import Login from '@/pages/login';
 import MainLayout from '@/pages/mainLayout';
+import Teacher from '@/pages/teacher';
 import { createBrowserRouter } from 'react-router-dom';
 
 const router = createBrowserRouter([
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: '/director',
         element: <Director />,
+      },
+      {
+        path: '/teacher',
+        element: <Teacher />,
       }
       // Outras rotas que herdam o MainLayout
     ],

@@ -36,14 +36,19 @@ import { LiaUserEditSolid } from 'react-icons/lia'
 import { ImExit } from 'react-icons/im'
 import { GrConfigure } from 'react-icons/gr'
 import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+
+import { SheetContext } from '@/contexts/open-sidebar-context'
+
 
 export default function Header() {
+  const sheet = useContext(SheetContext)
   return (
     <div className="flex justify-between items-center gradient-bg px-4 py-2 border-b-2 border-green-400">
       <div className="flex gap-2 justify-center items-center">
-        <Sheet>
+        <Sheet open={sheet?.isOpen}>
           <SheetTrigger>
-            <IoMenuSharp className="w-5 h-7 text-contrast" />
+            <IoMenuSharp onClick={sheet?.handleTogleSheet} className="w-5 h-7 text-contrast" />
           </SheetTrigger>
 
           <Separator className="h-3 mx-1 bg-green-400" orientation="vertical" />
@@ -61,14 +66,18 @@ export default function Header() {
                       Nenhum resultado encontrado
                     </CommandEmpty>
                     <CommandGroup heading="Opções principais">
-                      <CommandItem>
-                        <CalendarIcon className="mr-2 h-4 w-4 text-green-400" />
-                        <span className="text-zinc-50">Direção</span>
-                      </CommandItem>
-                      <CommandItem>
-                        <FaceIcon className="mr-2 h-4 w-4 text-green-400" />
-                        <span className="text-zinc-50">Docente</span>
-                      </CommandItem>
+                      <Link onClick={sheet?.handleTogleSheet} to={'/director'}>
+                        <CommandItem className="cursor-pointer" >
+                          <CalendarIcon className="mr-2 h-4 w-4 text-green-400" />
+                          <span className="text-zinc-50">Direção</span>
+                        </CommandItem>
+                      </Link>
+                      <Link onClick={sheet?.handleTogleSheet}to={'/teacher'}>
+                        <CommandItem className="cursor-pointer">
+                          <FaceIcon className="mr-2 h-4 w-4 text-green-400" />
+                          <span className="text-zinc-50">Docente</span>
+                        </CommandItem>
+                      </Link>
                       <CommandItem>
                         <RocketIcon className="mr-2 h-4 w-4 text-green-400" />
                         <span className="text-zinc-50">Disciplina</span>
@@ -117,7 +126,10 @@ export default function Header() {
                 <LiaUserEditSolid />
                 Alterar dados
               </MenubarItem>
-              <Link className="flex items-center gap-2 w-full hover:bg-violet-200" to="/login">
+              <Link
+                className="flex items-center gap-2 w-full hover:bg-violet-200"
+                to="/login"
+              >
                 <MenubarItem className="py-1 flex gap-2 cursor-pointer w-full">
                   <ImExit />
                   Sair

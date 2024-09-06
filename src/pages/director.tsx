@@ -192,13 +192,13 @@ export default function Director() {
           </DialogContent>
         </Dialog>
       </div>
-      <Table className="bg-transparent backdrop-blur-[200px] border border-green-400">
+      <Table className="bg-violet-900/30 backdrop-blur-[300px] border border-primary shadow-md">
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]">ID</TableHead>
-            <TableHead>Nome</TableHead>
-            <TableHead>Departamento</TableHead>
-            <TableHead className="text-right">Data de Contratação</TableHead>
+            <TableHead className="w-[100px] text-contrast font-bold">ID</TableHead>
+            <TableHead className='text-contrast font-bold'>Nome</TableHead>
+            <TableHead className='text-contrast font-bold' >Departamento</TableHead>
+            <TableHead className="text-contrast font-bold text-right">Data de Contratação</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -222,35 +222,35 @@ export default function Director() {
   )
 }
 
-const dataTable = [
-  {
-    id: 'DIR001',
-    name: 'João Silva',
-    department: 'Administração',
-    hireDate: '01/02/2015'
-  },
-  {
-    id: 'DIR002',
-    name: 'Maria Oliveira',
-    department: 'Recursos Humanos',
-    hireDate: '15/03/2016'
-  },
-  {
-    id: 'DIR003',
-    name: 'Carlos Souza',
-    department: 'Financeiro',
-    hireDate: '20/05/2017'
-  },
-  {
-    id: 'DIR004',
-    name: 'Ana Santos',
-    department: 'Marketing',
-    hireDate: '10/08/2018'
-  },
-  {
-    id: 'DIR005',
-    name: 'José Pereira',
-    department: 'Vendas',
-    hireDate: '05/10/2019'
-  }
-]
+// const dataTable = [
+//   {
+//     id: 'DIR001',
+//     name: 'João Silva',
+//     department: 'Administração',
+//     hireDate: '01/02/2015'
+//   },
+//   {
+//     id: 'DIR002',
+//     name: 'Maria Oliveira',
+//     department: 'Recursos Humanos',
+//     hireDate: '15/03/2016'
+//   },
+//   {
+//     id: 'DIR003',
+//     name: 'Carlos Souza',
+//     department: 'Financeiro',
+//     hireDate: '20/05/2017'
+//   },
+//   {
+//     id: 'DIR004',
+//     name: 'Ana Santos',
+//     department: 'Marketing',
+//     hireDate: '10/08/2018'
+//   },
+//   {
+//     id: 'DIR005',
+//     name: 'José Pereira',
+//     department: 'Vendas',
+//     hireDate: '05/10/2019'
+//   }
+// ]
