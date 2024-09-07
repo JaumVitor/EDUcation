@@ -30,7 +30,7 @@ export default function MenuMain() {
               />
             </Card>
           </Link>
-          <Link className="w-full" to="#">
+          <Link className="w-full" to="/teacher">
             <Card
               title="Docente"
               icon={<FaChalkboardTeacher className="w-32 h-32" />}
@@ -45,7 +45,7 @@ export default function MenuMain() {
               <div className="absolute inset-0 [mask-image:radial-gradient(400px_at_center,white,transparent)] bg-black/50 dark:bg-black/90" />
             </Card>
           </Link>
-          <Link className="w-full" to="#">
+          <Link className="w-full" to="/subject">
             <Card title="Disciplina" icon={<GiBookshelf className="w-32 h-32" />}>
               <CanvasRevealEffect
                 animationSpeed={1}
@@ -55,7 +55,7 @@ export default function MenuMain() {
               />
             </Card>
           </Link>
-          <Link className="w-full" to="#">
+          <Link className="w-full" to="/class">
             <Card title="Turma" icon={<MdClass className="w-32 h-32" />}>
               <CanvasRevealEffect
                 animationSpeed={1}
@@ -65,7 +65,7 @@ export default function MenuMain() {
               />
             </Card>
           </Link>
-          <Link className="w-full" to="#">
+          <Link className="w-full" to="/student">
             <Card title="Aluno" icon={<PiStudentBold className="w-32 h-32" />}>
               <CanvasRevealEffect
                 animationSpeed={1}

@@ -67,7 +67,7 @@ export default function Header() {
                     </CommandEmpty>
                     <CommandGroup heading="Opções principais">
                       <Link onClick={sheet?.handleTogleSheet} to={'/director'}>
-                        <CommandItem className="cursor-pointer" >
+                        <CommandItem className="cursor-pointer"  >
                           <CalendarIcon className="mr-2 h-4 w-4 text-green-400" />
                           <span className="text-zinc-50">Direção</span>
                         </CommandItem>
@@ -78,14 +78,18 @@ export default function Header() {
                           <span className="text-zinc-50">Docente</span>
                         </CommandItem>
                       </Link>
-                      <CommandItem>
-                        <RocketIcon className="mr-2 h-4 w-4 text-green-400" />
-                        <span className="text-zinc-50">Disciplina</span>
-                      </CommandItem>
-                      <CommandItem>
-                        <RocketIcon className="mr-2 h-4 w-4 text-green-400" />
-                        <span className="text-zinc-50">Turma</span>
-                      </CommandItem>
+                      <Link onClick={sheet?.handleTogleSheet}to={'/subject'}>
+                        <CommandItem className="cursor-pointer">
+                          <RocketIcon className="mr-2 h-4 w-4 text-green-400" />
+                          <span className="text-zinc-50">Disciplina</span>
+                        </CommandItem>
+                      </Link>
+                      <Link onClick={sheet?.handleTogleSheet}to={'/class'}>
+                        <CommandItem className="cursor-pointer">
+                          <RocketIcon className="mr-2 h-4 w-4 text-green-400" />
+                          <span className="text-zinc-50">Turma</span>
+                        </CommandItem>
+                      </Link>
                     </CommandGroup>
                   </CommandList>
                 </Command>

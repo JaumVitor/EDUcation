@@ -202,6 +202,8 @@ export default function Director() {
           </DialogContent>
         </Dialog>
       </div>
+
+      {/* Tabela de cadastro dos diretores */}
       <Table className="bg-violet-900/30 backdrop-blur-[300px] border border-primary shadow-md">
         <TableHeader>
           <TableRow>
