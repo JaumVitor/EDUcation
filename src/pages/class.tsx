@@ -3,7 +3,6 @@ import {
   Activity,
   ArrowUpRight,
   CircleUser,
-  Menu,
   Package2,
   Users
 } from 'lucide-react'
@@ -70,8 +69,6 @@ export default function School() {
                       size="icon"
                       className="shrink-0 md:hidden"
                     >
-                      <Menu className="h-5 w-5" />
-                      <span className="sr-only">Toggle navigation menu</span>
                     </Button>
                   </SheetTrigger>
                   <SheetContent side="left">
@@ -187,7 +184,7 @@ export default function School() {
                           </CardDescription>
                         </div>
                         <div className='flex gap-2'>
-                          <Button asChild size="sm" className="ml-auto gap-1">
+                          <Button asChild size="sm" className="ml-auto gap-1 shadow-lg">
                             <Link to="#">
                               Criar Turma
                               <ArrowUpRight className="h-4 w-4" />

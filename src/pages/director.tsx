@@ -47,6 +47,7 @@ import {
 
 import { useContext } from 'react'
 import { SheetContext } from '@/contexts/open-sidebar-context'
+import PaginationSection from '@/components/paginationSection'
 
 export default function Director() {
   const [departaments] = useState<string[]>([
@@ -59,28 +60,29 @@ export default function Director() {
 
   const [date, setDate] = useState<Date>()
   const [name, setName] = useState<string>('')
-  const [selectedDepartment, setSelectedDepartment] = useState<string>('Nenhum selecionado')
-  const [dataTable, setDataTable] = useState<{ 
-    id: number, 
-    name: string, 
-    department: string, 
-    hireDate: Date | null 
-  }[]>([]);
-  
+  const [selectedDepartment, setSelectedDepartment] =
+    useState<string>('Nenhum selecionado')
+  const [dataTable, setDataTable] = useState<
+    {
+      id: number
+      name: string
+      department: string
+      hireDate: Date | null
+    }[]
+  >([])
+
   function handleNameChangeName(event: React.ChangeEvent<HTMLInputElement>) {
     setName(event.target.value)
-    console.log('Nome do diretor:', event.target.value)
   }
-  
+
   const handleSelectChange = (value: string) => {
     setSelectedDepartment(value)
-    console.log('Departamento selecionado:', value)
   }
-  
+
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    // Aqui você pode enviar os dados do formulário para a API 
-    
+    // Aqui você pode enviar os dados do formulário para a API
+
     const newDataTable = {
       id: dataTable.length + 1,
       name: name,
@@ -89,14 +91,21 @@ export default function Director() {
     }
 
     setDataTable([...dataTable, newDataTable])
-    console.log('Formulário enviado')
-
     setName('')
     setDate(undefined)
     modal?.handleTogleModal()
   }
 
   const modal = useContext(SheetContext)
+
+  // Paginação da tabela
+  const [currentPage, setCurrentPage] = useState(1)
+  const [postsPerPage, setPostsPerPage] = useState(6)
+
+  const lastPostIndex = currentPage * postsPerPage
+  const firstPostIndex = lastPostIndex - postsPerPage
+  const currentPosts = dataTable.slice(firstPostIndex, lastPostIndex)
+
   return (
     <div className="pt-5">
       <div className="flex items-center justify-between">
@@ -204,22 +213,26 @@ export default function Director() {
       </div>
 
       {/* Tabela de cadastro dos diretores */}
-      <Table className="bg-violet-900/30 backdrop-blur-[300px] border border-primary shadow-md">
+      <Table className="border-violet-500 border bg-violet-200/20 backdrop-blur-[200px] shadow-md">
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px] text-contrast font-bold">ID</TableHead>
-            <TableHead className='text-contrast font-bold'>Nome</TableHead>
-            <TableHead className='text-contrast font-bold' >Departamento</TableHead>
-            <TableHead className="text-contrast font-bold text-right">Data de Contratação</TableHead>
+            <TableHead className="w-[100px] font-bold">ID</TableHead>
+            <TableHead className="font-bold">Nome</TableHead>
+            <TableHead className="font-bold">Departamento</TableHead>
+            <TableHead className="font-bold text-right">
+              Data de Contratação
+            </TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {dataTable.map(data => (
+          {currentPosts.map(data => (
             <TableRow key={data.id}>
               <TableCell className="font-medium">{data.id}</TableCell>
               <TableCell>{data.name}</TableCell>
               <TableCell>{data.department}</TableCell>
-              <TableCell className="text-right">{data.hireDate ? data.hireDate.toString() : null}</TableCell>
+              <TableCell className="text-right">
+                {data.hireDate ? data.hireDate.toString() : null}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -230,39 +243,15 @@ export default function Director() {
           </TableRow>
         </TableFooter>
       </Table>
+
+      {/* Paginação da tabela */}
+      <PaginationSection
+        totalPosts={dataTable.length}
+        postsPerPage={postsPerPage}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
     </div>
   )
 }
 
-// const dataTable = [
-//   {
-//     id: 'DIR001',
-//     name: 'João Silva',
-//     department: 'Administração',
-//     hireDate: '01/02/2015'
-//   },
-//   {
-//     id: 'DIR002',
-//     name: 'Maria Oliveira',
-//     department: 'Recursos Humanos',
-//     hireDate: '15/03/2016'
-//   },
-//   {
-//     id: 'DIR003',
-//     name: 'Carlos Souza',
-//     department: 'Financeiro',
-//     hireDate: '20/05/2017'
-//   },
-//   {
-//     id: 'DIR004',
-//     name: 'Ana Santos',
-//     department: 'Marketing',
-//     hireDate: '10/08/2018'
-//   },
-//   {
-//     id: 'DIR005',
-//     name: 'José Pereira',
-//     department: 'Vendas',
-//     hireDate: '05/10/2019'
-//   }
-// ]

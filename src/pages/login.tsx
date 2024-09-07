@@ -20,7 +20,7 @@ export default function Login() {
       <div className="flex h-full overflow-hidden">
         <BackgroundGradientAnimation className="absolute top-0 left-0 h-full w-screen z-10">
           <div className="flex flex-col items-center justify-center w-[100%] h-screen pointer-events-auto z-50">
-            <Card className="w-[400px] bg-transparent backdrop-blur-[250px] shadow-xl pt-6 pb-10 border-violet-500">
+            <Card className="w-[400px] bg-transparent backdrop-blur-[250px] shadow-xl pt-6 pb-10 border-violet-300">
               <CardHeader className="flex flex-col items-center">
                 <CardTitle className="text-4xl text-green-400 font-bold">
                   Login

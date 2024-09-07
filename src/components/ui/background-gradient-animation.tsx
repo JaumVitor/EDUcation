@@ -98,7 +98,7 @@ export const BackgroundGradientAnimation = ({
           <filter id="blurMe">
             <feGaussianBlur
               in="SourceGraphic"
-              stdDeviation="10"
+              stdDeviation="500"
               result="blur"
             />
             <feColorMatrix
