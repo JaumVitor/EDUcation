@@ -32,6 +32,13 @@ import {
   SelectValue
 } from '@/components/ui/select'
 
+import { Separator } from '@/components/ui/separator'
+import { ScrollArea } from '@/components/ui/scroll-area'
+
+const tags = Array.from({ length: 50 }).map(
+  (_, i, a) => `v1.2.0-beta.${a.length - i}`
+)
+
 import { Checkbox } from '@/components/ui/checkbox'
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
@@ -43,6 +50,23 @@ export default function LotationClass() {
     'Prof. Carlos',
     'Prof. Ana',
     'Prof. Pedro'
+  ]
+  const students = [
+    'Aluno 1',
+    'Aluno 2',
+    'Aluno 3',
+    'Aluno 4',
+    'Aluno 3',
+    'Aluno 4',
+    'Aluno 3',
+    'Aluno 4',
+    'Aluno 3',
+    'Aluno 4',
+    'Aluno 3',
+    'Aluno 4',
+    'Aluno 3',
+    'Aluno 4',
+    'Aluno 5'
   ]
 
   // Informações sobre as disciplinas que serão vinculadas ao professor
@@ -88,7 +112,28 @@ export default function LotationClass() {
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-2">
-                  {/* Lista de alunos para selecionar */}
+                    {/* Lista de alunos para selecionar */}
+                    <ScrollArea className="h-36 w-full rounded-md border">
+                      <div className="p-4">
+                        <h4 className="mb-4 text-sm font-medium leading-none">
+                          Lista de alunos sem matricula
+                        </h4>
+                        {/* Lista de alunos para selecionar */}
+                        <div className="flex flex-col justify-start gap-1">
+                          {students.map((student, index) => {
+                            return (
+                              <div
+                                key={index}
+                                className="flex items-center gap-2"
+                              >
+                                <Checkbox id="terms" name="terms" />
+                                <Label htmlFor="terms">{student}</Label>
+                              </div>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    </ScrollArea>
                   </CardContent>
                 </Card>
               </TabsContent>
