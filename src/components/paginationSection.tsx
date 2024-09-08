@@ -12,12 +12,14 @@ export default function PaginationSection({
   totalPosts,
   postsPerPage,
   currentPage,
-  setCurrentPage
+  setCurrentPage,
+  page
 }: {
   totalPosts: any
   postsPerPage: any
   currentPage: any
   setCurrentPage: any
+  page?: string
 }) {
   const pageNumbers = []
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
@@ -49,9 +51,11 @@ export default function PaginationSection({
     const renderedPages = activePages.map((page, idx) => (
       <PaginationItem
         key={idx}
-        className={currentPage === page ? 'bg-neutral-100 rounded-md' : ''}
+        className={
+          currentPage === page ? 'bg-contrast text-zinc-100 rounded-md' : ''
+        }
       >
-        <PaginationLink onClick={() => setCurrentPage(page)}>
+        <PaginationLink className="w-8 h-8 flex items-center justify-center text-xs" onClick={() => setCurrentPage(page)}>
           {page}
         </PaginationLink>
       </PaginationItem>
@@ -83,20 +87,37 @@ export default function PaginationSection({
   }
 
   return (
-    <div>
-      <Pagination>
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious onClick={handlePrevPage} />
-          </PaginationItem>
+    <>
+      {/* Page for */}
+      {page == 'class' ? (
+        <Pagination className="py-2 border-t border-primary bg-transparent backdrop-blur-[200px] cursor-pointer">
+          <PaginationContent>
+            <PaginationItem className="bg-primary shadow-m rounded-md text-zinc-50">
+              <PaginationPrevious onClick={handlePrevPage} />
+            </PaginationItem>
 
-          {renderPages()}
+            {renderPages()}
 
-          <PaginationItem>
-            <PaginationNext onClick={handleNextPage} />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
-    </div>
+            <PaginationItem className="bg-primary shadow-md rounded-md text-zinc-50">
+              <PaginationNext onClick={handleNextPage} />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+      ) : (
+        <Pagination className="mt-2 p-1 border border-primary bg-transparent backdrop-blur-[200px] cursor-pointer rounded-md">
+          <PaginationContent>
+            <PaginationItem className="bg-primary shadow-m rounded-md text-zinc-50">
+              <PaginationPrevious onClick={handlePrevPage} />
+            </PaginationItem>
+
+            {renderPages()}
+
+            <PaginationItem className="bg-primary shadow-md rounded-md text-zinc-50">
+              <PaginationNext onClick={handleNextPage} />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+      )}
+    </>
   )
 }

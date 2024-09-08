@@ -49,6 +49,25 @@ import { useContext } from 'react'
 import { SheetContext } from '@/contexts/open-sidebar-context'
 import PaginationSection from '@/components/paginationSection'
 
+import { Pie, PieChart } from 'recharts'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle
+} from '@/components/ui/card'
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent
+} from '@/components/ui/chart'
+
+import { TrendingUp } from 'lucide-react'
+import { IoAddCircle } from 'react-icons/io5'
+
 export default function Director() {
   const [departaments] = useState<string[]>([
     'Administração',
@@ -100,7 +119,7 @@ export default function Director() {
 
   // Paginação da tabela
   const [currentPage, setCurrentPage] = useState(1)
-  const [postsPerPage, setPostsPerPage] = useState(6)
+  const [postsPerPage] = useState(6)
 
   const lastPostIndex = currentPage * postsPerPage
   const firstPostIndex = lastPostIndex - postsPerPage
@@ -121,9 +140,10 @@ export default function Director() {
           <DialogTrigger asChild>
             <Button
               onClick={modal?.handleTogleModal}
-              className="bg-green-500 hover:bg-green-600 text-zinc-100 font-bold hover:text-zinc-100 shadow-md border-none"
+              className="bg-green-500 hover:bg-green-600 text-zinc-100 font-bold hover:text-zinc-100 shadow-md border-green-600 flex gap-2"
               variant="outline"
             >
+              <IoAddCircle className="w-5 h-5" />
               Cadastrar Novo
             </Button>
           </DialogTrigger>
@@ -184,7 +204,7 @@ export default function Director() {
                         >
                           <CalendarIcon className="mr-2 h-4 w-4" />
                           {date ? (
-                            format(date, 'PPP')
+                            format(date, 'dd/MM/yyyy')
                           ) : (
                             <span>Escolha a data</span>
                           )}
@@ -213,45 +233,112 @@ export default function Director() {
       </div>
 
       {/* Tabela de cadastro dos diretores */}
-      <Table className="border-violet-500 border bg-violet-200/20 backdrop-blur-[200px] shadow-md">
-        <TableHeader>
-          <TableRow>
-            <TableHead className="w-[100px] font-bold">ID</TableHead>
-            <TableHead className="font-bold">Nome</TableHead>
-            <TableHead className="font-bold">Departamento</TableHead>
-            <TableHead className="font-bold text-right">
-              Data de Contratação
-            </TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {currentPosts.map(data => (
-            <TableRow key={data.id}>
-              <TableCell className="font-medium">{data.id}</TableCell>
-              <TableCell>{data.name}</TableCell>
-              <TableCell>{data.department}</TableCell>
-              <TableCell className="text-right">
-                {data.hireDate ? data.hireDate.toString() : null}
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-        <TableFooter>
-          <TableRow>
-            <TableCell colSpan={3}>Total de Diretores</TableCell>
-            <TableCell className="text-right">{dataTable.length}</TableCell>
-          </TableRow>
-        </TableFooter>
-      </Table>
-
-      {/* Paginação da tabela */}
-      <PaginationSection
-        totalPosts={dataTable.length}
-        postsPerPage={postsPerPage}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
+      <div className="grid grid-cols-4 gap-5 justify-between">
+        <div className="col-span-3">
+          <Table className="border-violet-500 border bg-violet-200/20 backdrop-blur-[200px] shadow-md">
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[100px] font-bold">ID</TableHead>
+                <TableHead className="font-bold">Nome</TableHead>
+                <TableHead className="font-bold">Departamento</TableHead>
+                <TableHead className="font-bold text-right">
+                  Data de Contratação
+                </TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {currentPosts.map(data => (
+                <TableRow key={data.id}>
+                  <TableCell className="font-medium">{data.id}</TableCell>
+                  <TableCell>{data.name}</TableCell>
+                  <TableCell>{data.department}</TableCell>
+                  <TableCell className="text-right">
+                    {data.hireDate ? format(data.hireDate, 'dd/MM/yyyy') : null}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+            <TableFooter>
+              <TableRow>
+                <TableCell colSpan={3}>Total de Diretores</TableCell>
+                <TableCell className="text-right">{dataTable.length}</TableCell>
+              </TableRow>
+            </TableFooter>
+          </Table>
+          {/* Paginação da tabela */}
+          <PaginationSection
+            totalPosts={dataTable.length}
+            postsPerPage={postsPerPage}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
+        </div>
+        {/* Gráfico de pizza com a quantidade de diretores por departamento */}
+        <Card className="flex flex-col rounded-md">
+          <CardHeader className="items-center pb-0">
+            <CardTitle className="text-sm">
+              Quantitativo por departamento
+            </CardTitle>
+            <CardDescription>Ano letivo - 2024</CardDescription>
+          </CardHeader>
+          <CardContent className="flex-1 pb-0">
+            <ChartContainer
+              config={chartConfig}
+              className="mx-auto aspect-square max-h-[200px]"
+            >
+              <PieChart>
+                <ChartTooltip
+                  cursor={false}
+                  content={<ChartTooltipContent hideLabel />}
+                />
+                <Pie data={chartData} dataKey="amount" nameKey="departament" />
+              </PieChart>
+            </ChartContainer>
+          </CardContent>
+          <CardFooter className="flex-col gap-2 text-sm">
+            <div className="flex items-center gap-2 font-medium leading-none">
+              Aumento de 2.2% esse ano <TrendingUp className="h-4 w-4" />
+            </div>
+            <div className="leading-none text-muted-foreground text-xs text-center">
+              Exibindo total de diretores por departamento ultimo ano
+            </div>
+          </CardFooter>
+        </Card>
+      </div>
     </div>
   )
 }
 
+export const description = 'A pie chart with a custom label'
+const chartData = [
+  { departament: 'ADM', amount: 275, fill: 'var(--color-chrome)' },
+  { departament: 'RH', amount: 200, fill: 'var(--color-safari)' },
+  { departament: 'Financeiro', amount: 187, fill: 'var(--color-firefox)' },
+  { departament: 'Marketing', amount: 173, fill: 'var(--color-edge)' },
+  { departament: 'Vendas', amount: 90, fill: 'var(--color-other)' }
+]
+const chartConfig = {
+  departament: {
+    label: 'departament'
+  },
+  chrome: {
+    label: 'Chrome',
+    color: 'hsl(var(--chart-1))'
+  },
+  safari: {
+    label: 'Safari',
+    color: 'hsl(var(--chart-2))'
+  },
+  firefox: {
+    label: 'Firefox',
+    color: 'hsl(var(--chart-3))'
+  },
+  edge: {
+    label: 'Edge',
+    color: 'hsl(var(--chart-4))'
+  },
+  other: {
+    label: 'Other',
+    color: 'hsl(var(--chart-5))'
+  }
+} satisfies ChartConfig
