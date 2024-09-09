@@ -1,10 +1,6 @@
 import { useState, useEffect } from 'react'
 import {
-  Activity,
   ArrowUpRight,
-  CircleUser,
-  Package2,
-  Users
 } from 'lucide-react'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
@@ -18,17 +14,6 @@ import {
   CardTitle
 } from '@/components/ui/card'
 
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue
-} from '@/components/ui/select'
-
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import {
   Table,
   TableBody,
@@ -44,23 +29,12 @@ import Wrapper from '@/components/Wrapper'
 
 import PaginationSection from '@/components/paginationSection'
 import { MdDelete } from 'react-icons/md'
-import { IoMdAddCircleOutline } from 'react-icons/io'
 import { MdModeEditOutline } from 'react-icons/md'
 
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger
-} from '@/components/ui/dialog'
-
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
 import { ImSearch } from 'react-icons/im'
 import LotationClass from '@/components/lotation-class'
+import { InfoClassDashboard } from '@/components/info-class-dashboard'
+import DialogNewClass from '@/components/dialog-new-class'
 
 export const description =
   'Um painel de controle para a escola, com informações sobre várias turmas, número de alunos, atividades recentes e desempenho geral. O cabeçalho contém uma barra de navegação, um campo de busca e um menu de usuário. A área principal é dividida em duas seções: uma com estatísticas gerais e outra com detalhes das atividades recentes das turmas.'
@@ -100,23 +74,13 @@ export default function School() {
   }, [])
 
   // Informações sobre todos os professores cadastrados
- 
 
   const [currentPage, setCurrentPage] = useState(1)
   const [postsPerPage] = useState(4)
-  const [amount_students, setAmountStudents] = useState('')
-  const [numberClass, setNumberClass] = useState('')
-  const [className, setClassName] = useState('')
 
   const lastPostIndex = currentPage * postsPerPage
   const firstPostIndex = lastPostIndex - postsPerPage
   const currentPosts = classData.slice(firstPostIndex, lastPostIndex)
-
-  const handleAmountStudentsChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setAmountStudents(event.target.value)
-  }
 
   return (
     <div className="h-screen flex flex-col">
@@ -126,114 +90,10 @@ export default function School() {
           <main className="flex flex-col w-full h-screen pointer-events-auto bg-zinc-100 z-50">
             <Wrapper>
               <div className="flex min-h-screen w-full flex-col">
-                <Sheet>
-                  <SheetTrigger asChild>
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      className="shrink-0 md:hidden"
-                    ></Button>
-                  </SheetTrigger>
-                  <SheetContent side="left">
-                    <nav className="grid gap-6 text-lg font-medium">
-                      <Link
-                        to="#"
-                        className="flex items-center gap-2 text-lg font-semibold"
-                      >
-                        <Package2 className="h-6 w-6" />
-                        <span className="sr-only">Escola XYZ</span>
-                      </Link>
-                      <Link to="#" className="hover:text-foreground">
-                        Painel
-                      </Link>
-                      <Link
-                        to="#"
-                        className="text-muted-foreground hover:text-foreground"
-                      >
-                        Turmas
-                      </Link>
-                      <Link
-                        to="#"
-                        className="text-muted-foreground hover:text-foreground"
-                      >
-                        Atividades
-                      </Link>
-                      <Link
-                        to="#"
-                        className="text-muted-foreground hover:text-foreground"
-                      >
-                        Desempenho
-                      </Link>
-                      <Link
-                        to="#"
-                        className="text-muted-foreground hover:text-foreground"
-                      >
-                        Configurações
-                      </Link>
-                    </nav>
-                  </SheetContent>
-                </Sheet>
                 <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4"></div>
                 <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
                   <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
-                    <Card x-chunk="school-01-chunk-0">
-                      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">
-                          Total de Turmas
-                        </CardTitle>
-                        <Users className="h-4 w-4 text-muted-foreground" />
-                      </CardHeader>
-                      <CardContent>
-                        <div className="text-2xl font-bold">
-                          {classData.length}
-                        </div>
-                        <p className="text-xs text-muted-foreground">
-                          +1 nova turma este mês
-                        </p>
-                      </CardContent>
-                    </Card>
-                    <Card x-chunk="school-01-chunk-1">
-                      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">
-                          Atividades Recentes
-                        </CardTitle>
-                        <Activity className="h-4 w-4 text-muted-foreground" />
-                      </CardHeader>
-                      <CardContent>
-                        <div className="text-2xl font-bold">50</div>
-                        <p className="text-xs text-muted-foreground">
-                          +10 atividades esta semana
-                        </p>
-                      </CardContent>
-                    </Card>
-                    <Card x-chunk="school-01-chunk-2">
-                      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">
-                          Desempenho Médio
-                        </CardTitle>
-                        <CircleUser className="h-4 w-4 text-muted-foreground" />
-                      </CardHeader>
-                      <CardContent>
-                        <div className="text-2xl font-bold">80%</div>
-                        <p className="text-xs text-muted-foreground">
-                          +3% desde o último mês
-                        </p>
-                      </CardContent>
-                    </Card>
-                    <Card x-chunk="school-01-chunk-3">
-                      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium">
-                          Presentes Hoje
-                        </CardTitle>
-                        <Activity className="h-4 w-4 text-muted-foreground" />
-                      </CardHeader>
-                      <CardContent>
-                        <div className="text-2xl font-bold">280</div>
-                        <p className="text-xs text-muted-foreground">
-                          20 ausentes
-                        </p>
-                      </CardContent>
-                    </Card>
+                    <InfoClassDashboard />
                   </div>
                   <div className="grid gap-4 md:gap-8 lg:grid-cols-2 xl:grid-cols-3">
                     <Card
@@ -241,6 +101,7 @@ export default function School() {
                       x-chunk="school-01-chunk-4"
                     >
                       <div>
+                        {/* Tabela com as informações das turmas cadastradas */}
                         <CardHeader className="flex flex-row items-center justify-between">
                           <div className="grid gap-2">
                             <CardTitle>Turmas cadastradas</CardTitle>
@@ -255,88 +116,8 @@ export default function School() {
                                 <ArrowUpRight className="h-4 w-4" />
                               </Link>
                             </Button>
-
-                            <Dialog>
-                              <DialogTrigger asChild>
-                                <Button
-                                  asChild
-                                  size="sm"
-                                  className="ml-auto gap-1 shadow-lg bg-green-500 border border-green-600 hover:bg-[#41CA73] text-zinc-50"
-                                >
-                                  <Link to="#">
-                                    Criar Turma
-                                    <IoMdAddCircleOutline className="h-4 w-4" />
-                                  </Link>
-                                </Button>
-                              </DialogTrigger>
-                              <DialogContent className="sm:max-w-[800px]">
-                                <DialogHeader>
-                                  <DialogTitle className="text-contrast text-2xl font-bold">
-                                    Cadastramento de Turma
-                                  </DialogTitle>
-                                  <DialogDescription>
-                                    Preencha os campos abaixo para criar uma
-                                    nova turma.
-                                  </DialogDescription>
-                                </DialogHeader>
-                                <form>
-                                  <div className="grid gap-4 py-4">
-                                    <div className="grid grid-cols-4 items-center gap-4">
-                                      {/* Informações sobre o nome da turma */}
-                                      <Label htmlFor="class_name">
-                                        Nome da turma
-                                      </Label>
-                                      <Input
-                                        id="class_name"
-                                        value={className}
-                                        onChange={e =>
-                                          setClassName(e.target.value)
-                                        }
-                                        className="col-span-3"
-                                        placeholder="Nome do diretor"
-                                        required={true}
-                                      />
-                                      {/* Informações sobre o numero da sala de aula */}
-                                      <Label htmlFor="class_number">
-                                        Nº da sala
-                                      </Label>
-                                      <Input
-                                        onChange={e =>
-                                          setNumberClass(e.target.value)
-                                        }
-                                        id="class_number"
-                                        value={numberClass}
-                                        className="col-span-3"
-                                        placeholder="Digite o numero da sala"
-                                        required={true}
-                                      />
-
-                                      {/* Informações sobre quem serão os professores da turma do professor */}
-                                      <Label htmlFor="amount_students">
-                                        Capacidade na turma
-                                      </Label>
-                                      <Input
-                                        type="number"
-                                        id="amount_students"
-                                        value={amount_students}
-                                        onChange={handleAmountStudentsChange}
-                                        className="col-span-3"
-                                        placeholder="Ex: 20 alunos"
-                                        required={true}
-                                      ></Input>
-                                    </div>
-                                  </div>
-                                  <DialogFooter>
-                                    <Button
-                                      className="w-full mt-5"
-                                      type="submit"
-                                    >
-                                      Salvar cadastro
-                                    </Button>
-                                  </DialogFooter>
-                                </form>
-                              </DialogContent>
-                            </Dialog>
+                            {/* Dialog para cadastrar uma nova turma CRIAR TURMA*/}
+                            <DialogNewClass />
                           </div>
                         </CardHeader>
                         <CardContent>

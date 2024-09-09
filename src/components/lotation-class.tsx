@@ -52,21 +52,78 @@ export default function LotationClass() {
     'Prof. Pedro'
   ]
   const students = [
-    'Aluno 1',
-    'Aluno 2',
-    'Aluno 3',
-    'Aluno 4',
-    'Aluno 3',
-    'Aluno 4',
-    'Aluno 3',
-    'Aluno 4',
-    'Aluno 3',
-    'Aluno 4',
-    'Aluno 3',
-    'Aluno 4',
-    'Aluno 3',
-    'Aluno 4',
-    'Aluno 5'
+    {
+      name: 'João Silva',
+      age: 20,
+      email: 'joao.silva@example.com',
+      registrationNumber: '20230001'
+    },
+    {
+      name: 'Maria Oliveira',
+      age: 22,
+      email: 'maria.oliveira@example.com',
+      registrationNumber: '20230002'
+    },
+    {
+      name: 'Pedro Santos',
+      age: 19,
+      email: 'pedro.santos@example.com',
+      registrationNumber: '20230003'
+    },
+    {
+      name: 'Ana Costa',
+      age: 21,
+      email: 'ana.costa@example.com',
+      registrationNumber: '20230004'
+    },
+    {
+      name: 'Lucas Pereira',
+      age: 23,
+      email: 'lucas.pereira@example.com',
+      registrationNumber: '20230005'
+    },
+    {
+      name: 'Beatriz Almeida',
+      age: 20,
+      email: 'beatriz.almeida@example.com',
+      registrationNumber: '20230006'
+    },
+    {
+      name: 'Juliana Souza',
+      age: 23,
+      email: 'juliana.souza@example.com',
+      registrationNumber: '20230010'
+    },
+    {
+      name: 'Felipe Barbosa',
+      age: 20,
+      email: 'felipe.barbosa@example.com',
+      registrationNumber: '20230011'
+    },
+    {
+      name: 'Carolina Gomes',
+      age: 22,
+      email: 'carolina.gomes@example.com',
+      registrationNumber: '20230012'
+    },
+    {
+      name: 'Bruno Martins',
+      age: 19,
+      email: 'bruno.martins@example.com',
+      registrationNumber: '20230013'
+    },
+    {
+      name: 'Fernanda Dias',
+      age: 21,
+      email: 'fernanda.dias@example.com',
+      registrationNumber: '20230014'
+    },
+    {
+      name: 'Thiago Araujo',
+      age: 23,
+      email: 'thiago.araujo@example.com',
+      registrationNumber: '20230015'
+    }
   ]
 
   // Informações sobre as disciplinas que serão vinculadas ao professor
@@ -98,12 +155,12 @@ export default function LotationClass() {
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 py-4">
-            <Tabs defaultValue="account" className="w-full">
+            <Tabs defaultValue="student" className="w-full">
               <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="account">Alunos</TabsTrigger>
-                <TabsTrigger value="password">Professores</TabsTrigger>
+                <TabsTrigger value="student">Alunos</TabsTrigger>
+                <TabsTrigger value="teacher">Professores</TabsTrigger>
               </TabsList>
-              <TabsContent value="account">
+              <TabsContent value="student">
                 <Card>
                   <CardHeader>
                     <CardTitle>Matricular alunos</CardTitle>
@@ -113,31 +170,32 @@ export default function LotationClass() {
                   </CardHeader>
                   <CardContent className="space-y-2">
                     {/* Lista de alunos para selecionar */}
-                    <ScrollArea className="h-36 w-full rounded-md border">
-                      <div className="p-4">
-                        <h4 className="mb-4 text-sm font-medium leading-none">
-                          Lista de alunos sem matricula
-                        </h4>
-                        {/* Lista de alunos para selecionar */}
-                        <div className="flex flex-col justify-start gap-1">
-                          {students.map((student, index) => {
-                            return (
-                              <div
-                                key={index}
-                                className="flex items-center gap-2"
-                              >
-                                <Checkbox id="terms" name="terms" />
-                                <Label htmlFor="terms">{student}</Label>
+                    <div className="p-4 pt-0 overflow-auto max-h-52">
+                      <h4 className="mb-4 text-base font-bold leading-none">
+                        Lista de alunos sem matricula
+                      </h4>
+                      {/* Lista de alunos para selecionar */}
+                      <div className="flex flex-col justify-start">
+                        {students.map((student, index) => {
+                          return (
+                            <div
+                              key={index}
+                              className="flex items-center gap-2"
+                            >
+                              <div className="flex items-center text-sm w-full gap-2">
+                                <Checkbox id="student" name="student" />
+                                <span>{student.name} - </span>
+                                <span>Idade: {student.age}</span>
                               </div>
-                            )
-                          })}
-                        </div>
+                            </div>
+                          )
+                        })}
                       </div>
-                    </ScrollArea>
+                    </div>
                   </CardContent>
                 </Card>
               </TabsContent>
-              <TabsContent value="password">
+              <TabsContent value="teacher">
                 <Card>
                   <CardHeader>
                     <CardTitle>Lotação de professor</CardTitle>
@@ -190,7 +248,7 @@ export default function LotationClass() {
             </Tabs>
           </div>
           <DialogFooter>
-            <Button type="submit">Salvar lotação</Button>
+            <Button className="w-full" type="submit">Concluir lotação</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
