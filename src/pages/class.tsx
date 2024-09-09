@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react'
-import {
-  ArrowUpRight,
-} from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
@@ -38,6 +36,8 @@ import DialogNewClass from '@/components/dialog-new-class'
 
 export const description =
   'Um painel de controle para a escola, com informações sobre várias turmas, número de alunos, atividades recentes e desempenho geral. O cabeçalho contém uma barra de navegação, um campo de busca e um menu de usuário. A área principal é dividida em duas seções: uma com estatísticas gerais e outra com detalhes das atividades recentes das turmas.'
+
+import { DialogAllClasses } from '@/components/dialog-all-classes'
 
 export default function School() {
   const [classData, setClassData] = useState([
@@ -110,14 +110,8 @@ export default function School() {
                             </CardDescription>
                           </div>
                           <div className="flex gap-2">
-                            <Button asChild size="sm" className="ml-auto gap-1">
-                              <Link to="#">
-                                Ver Todas
-                                <ArrowUpRight className="h-4 w-4" />
-                              </Link>
-                            </Button>
-                            {/* Dialog para cadastrar uma nova turma CRIAR TURMA*/}
-                            <DialogNewClass />
+                            <DialogAllClasses /> {/* Dialog para visualizar todas as turmas */}
+                            <DialogNewClass /> {/* Dialog para cadastrar uma nova turma CRIAR TURMA*/}
                           </div>
                         </CardHeader>
                         <CardContent>
@@ -154,22 +148,23 @@ export default function School() {
                                     002
                                   </TableCell>
                                   <TableCell className="text-right flex justify-end gap-1">
-                                    {/* Operações de crud */}
+                                    {/* Opção para visualização da turma especifica */}
                                     <Button
                                       className="text-zinc-100 hover:text-green-500 bg-violet-600 border p-2"
                                       size={'sm'}
                                     >
                                       <ImSearch className="w-4 h-4" />
                                     </Button>
+                                    {/* Opção para edição da turma especifica */}
                                     <Button
                                       className="text-zinc-100 hover:text-green-500 bg-violet-600 border p-2"
                                       size={'sm'}
                                     >
                                       <MdModeEditOutline className="w-4 h-4" />
                                     </Button>
-
-                                    {/* Opções para lotação da turma */}
+                                    {/* Componente responsavel para lotação dos alunos ou professor */}
                                     <LotationClass />
+                                    {/* Opção para exclusão da turma */}
                                     <Button
                                       className="text-zinc-100 hover:text-green-500 bg-destructive border hover:bg-red-600 p-2"
                                       size={'sm'}
@@ -191,6 +186,7 @@ export default function School() {
                         page="class"
                       />
                     </Card>
+                    {/* Tabela informativa TURMAS RECENTES */}
                     <Card x-chunk="school-01-chunk-5">
                       <CardHeader>
                         <CardTitle>Turmas Recentes</CardTitle>

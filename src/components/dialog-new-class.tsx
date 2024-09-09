@@ -41,7 +41,7 @@ export default function DialogNewClass() {
             </Link>
           </Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[800px]">
+        <DialogContent className="sm:max-w-[600px]">
           <DialogHeader>
             <DialogTitle className="text-contrast text-2xl font-bold">
               Cadastramento de Turma

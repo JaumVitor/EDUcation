@@ -146,7 +146,7 @@ export default function LotationClass() {
             <TbBooks className="w-4 h-4" />
           </Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[500px]">
+        <DialogContent className="sm:max-w-[600px]">
           <DialogHeader>
             <DialogTitle>Lotações na turma</DialogTitle>
             <DialogDescription>
