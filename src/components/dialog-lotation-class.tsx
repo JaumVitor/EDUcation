@@ -9,7 +9,6 @@ import {
   DialogTrigger
 } from '@/components/ui/dialog'
 
-import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { TbBooks } from 'react-icons/tb'
 
@@ -17,7 +16,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle
 } from '@/components/ui/card'
@@ -32,25 +30,37 @@ import {
   SelectValue
 } from '@/components/ui/select'
 
-import { Separator } from '@/components/ui/separator'
-import { ScrollArea } from '@/components/ui/scroll-area'
-
-const tags = Array.from({ length: 50 }).map(
-  (_, i, a) => `v1.2.0-beta.${a.length - i}`
-)
-
 import { Checkbox } from '@/components/ui/checkbox'
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { useEffect, useState } from 'react'
 
-export default function LotationClass() {
-  const teachers = [
-    'Prof. João',
-    'Prof. Maria',
-    'Prof. Carlos',
-    'Prof. Ana',
-    'Prof. Pedro'
-  ]
+export default function DialogLotationClass() {
+  const [isSelected, setIsSelected] = useState(false)
+  const [teachers, setTeachers] = useState([{
+    name: ''
+  }])
+  
+  useEffect(() => { 
+    // Inserindo informações dos professores
+    setTeachers([
+      { name: 'Prof. João' }, 
+      { name: 'Prof. Maria' }, 
+      { name: 'Prof. Carlos' }, 
+      { name: 'Prof. Ana' }, 
+    ])
+  }
+  , [])
+
+  const handleSelectChange = (value: string) => {
+    // Se meu valor selecionado estiver dentro de teachers, altero o estado para selecionado
+    if (teachers.find(teacher => teacher.name === value)) {
+      setIsSelected(true);
+    } else {
+      setIsSelected(false);
+    }
+  };
+
   const students = [
     {
       name: 'João Silva',
@@ -148,7 +158,7 @@ export default function LotationClass() {
         </DialogTrigger>
         <DialogContent className="sm:max-w-[600px]">
           <DialogHeader>
-            <DialogTitle>Lotações na turma</DialogTitle>
+            <DialogTitle className='font-bold text-contrast text-xl'>Lotações na turma</DialogTitle>
             <DialogDescription>
               Faça a lotação na turma, pode escolher fazer a lotação dos
               professores ou dos alunos.
@@ -163,7 +173,7 @@ export default function LotationClass() {
               <TabsContent value="student">
                 <Card>
                   <CardHeader>
-                    <CardTitle>Matricular alunos</CardTitle>
+                    <CardTitle className='text-contrast font-bold'>Matricular alunos</CardTitle>
                     <CardDescription>
                       Selecione os alunos que deseja matricular na turma
                     </CardDescription>
@@ -198,7 +208,7 @@ export default function LotationClass() {
               <TabsContent value="teacher">
                 <Card>
                   <CardHeader>
-                    <CardTitle>Lotação de professor</CardTitle>
+                    <CardTitle className='font-bold text-contrast'>Lotação de professor</CardTitle>
                     <CardDescription>
                       Selecione o professor que deseja lotar na turma e quais
                       são as disciplinas que ele irá lecionar
@@ -206,7 +216,7 @@ export default function LotationClass() {
                   </CardHeader>
                   <CardContent className="space-y-2">
                     <div>
-                      <Select required={true}>
+                      <Select required={true} onValueChange={handleSelectChange}>
                         <SelectTrigger className="w-full col-span-2">
                           <SelectValue placeholder="Selecione o professor" />
                         </SelectTrigger>
@@ -218,9 +228,9 @@ export default function LotationClass() {
                                 <SelectItem
                                   className="cursor-pointer"
                                   key={index}
-                                  value={teacher}
+                                  value={teacher.name}
                                 >
-                                  {teacher}
+                                  {teacher.name}
                                 </SelectItem>
                               )
                             })}
@@ -228,19 +238,21 @@ export default function LotationClass() {
                         </SelectContent>
                       </Select>
                       {/* Informações sobre as disciplinas que serão vinculadas ao professor selecionado*/}
-                      <div className="flex flex-col justify-start gap-1 pt-3">
-                        {subjects.map((subject, index) => {
-                          return (
-                            <div
-                              key={index}
-                              className="flex items-center gap-2"
-                            >
-                              <Checkbox id="terms" name="terms" />
-                              <Label htmlFor="terms">{subject}</Label>
-                            </div>
-                          )
-                        })}
-                      </div>
+                      { isSelected && (
+                        <div className="flex flex-col justify-start gap-1 pt-3">
+                          {subjects.map((subject, index) => {
+                            return (
+                              <div
+                                key={index}
+                                className="flex items-center gap-2"
+                              >
+                                <Checkbox id="terms" name="terms" />
+                                <Label htmlFor="terms">{subject}</Label>
+                              </div>
+                            )
+                          })}
+                        </div>
+                      )}
                     </div>
                   </CardContent>
                 </Card>

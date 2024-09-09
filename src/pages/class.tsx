@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { ArrowUpRight } from 'lucide-react'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
@@ -20,7 +19,7 @@ import {
   TableHeader,
   TableRow
 } from '@/components/ui/table'
-import { Link } from 'react-router-dom'
+
 import { BackgroundGradientAnimation } from '@/components/ui/background-gradient-animation'
 import Header from '@/components/header'
 import Wrapper from '@/components/Wrapper'
@@ -30,7 +29,6 @@ import { MdDelete } from 'react-icons/md'
 import { MdModeEditOutline } from 'react-icons/md'
 
 import { ImSearch } from 'react-icons/im'
-import LotationClass from '@/components/lotation-class'
 import { InfoClassDashboard } from '@/components/info-class-dashboard'
 import DialogNewClass from '@/components/dialog-new-class'
 
@@ -38,6 +36,7 @@ export const description =
   'Um painel de controle para a escola, com informações sobre várias turmas, número de alunos, atividades recentes e desempenho geral. O cabeçalho contém uma barra de navegação, um campo de busca e um menu de usuário. A área principal é dividida em duas seções: uma com estatísticas gerais e outra com detalhes das atividades recentes das turmas.'
 
 import { DialogAllClasses } from '@/components/dialog-all-classes'
+import DialogLotationClass from '@/components/dialog-lotation-class'
 
 export default function School() {
   const [classData, setClassData] = useState([
@@ -163,7 +162,7 @@ export default function School() {
                                       <MdModeEditOutline className="w-4 h-4" />
                                     </Button>
                                     {/* Componente responsavel para lotação dos alunos ou professor */}
-                                    <LotationClass />
+                                    <DialogLotationClass />
                                     {/* Opção para exclusão da turma */}
                                     <Button
                                       className="text-zinc-100 hover:text-green-500 bg-destructive border hover:bg-red-600 p-2"
