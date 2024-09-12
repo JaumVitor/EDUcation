@@ -16,24 +16,31 @@ import { Link } from 'react-router-dom'
 import { IoMdAddCircleOutline } from 'react-icons/io'
 import { useState } from 'react'
 
+import { useContext } from 'react'
+import { SheetContext } from '@/contexts/open-sidebar-context'
+
 export default function DialogNewClass() {
   const [amount_students, setAmountStudents] = useState('')
   const [numberClass, setNumberClass] = useState('')
   const [className, setClassName] = useState('')
+
+  const modal = useContext(SheetContext)
 
   const handleAmountStudentsChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     setAmountStudents(event.target.value)
   }
+
   return (
     <>
-      <Dialog>
+      <Dialog open={modal?.isOpenModalNewClass}>
         <DialogTrigger asChild>
           <Button
             asChild
             size="sm"
             className="ml-auto gap-1 shadow-lg bg-green-500 border border-green-600 hover:bg-[#41CA73] text-zinc-50"
+            onClick={modal?.handleIsOpenModalNewClass}
           >
             <Link to="#">
               Criar Turma
@@ -41,7 +48,7 @@ export default function DialogNewClass() {
             </Link>
           </Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[600px]">
+        <DialogContent typeDialog='class' className="sm:max-w-[600px]">
           <DialogHeader>
             <DialogTitle className="text-contrast text-xl font-bold">
               Cadastramento de Turma
@@ -88,7 +95,7 @@ export default function DialogNewClass() {
               </div>
             </div>
             <DialogFooter>
-              <Button className="w-full mt-5" type="submit">
+              <Button onClick={modal?.handleIsOpenModalNewClass} className="w-full mt-5" type="submit">
                 Salvar cadastro
               </Button>
             </DialogFooter>

@@ -125,6 +125,7 @@ export default function Director() {
   const firstPostIndex = lastPostIndex - postsPerPage
   const currentPosts = dataTable.slice(firstPostIndex, lastPostIndex)
 
+  console.log(modal?.isOpenModal)
   return (
     <div className="pt-5">
       <div className="flex items-center justify-between">
