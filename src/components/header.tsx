@@ -90,6 +90,12 @@ export default function Header() {
                           <span className="text-zinc-50">Turma</span>
                         </CommandItem>
                       </Link>
+                      <Link onClick={sheet?.handleTogleSheet}to={'/student'}>
+                        <CommandItem className="cursor-pointer">
+                          <RocketIcon className="mr-2 h-4 w-4 text-green-400" />
+                          <span className="text-zinc-50">Aluno</span>
+                        </CommandItem>
+                      </Link>
                     </CommandGroup>
                   </CommandList>
                 </Command>
